@@ -1,0 +1,29 @@
+<h1>Reservar</h1>
+
+<p>Libro: {{libro.nombre}}</p>
+<p>Tarifa: $ {{libro.tarifa}} COP</p>
+<p>Cantidad Disponible: {{libro.cantidadDisponible}}</p>
+<p>Total a pagar: $ {{pagoTotal}} COP</p>
+
+<mat-dialog-content>
+
+  <form class="container" [formGroup]="formReserva" (ngSubmit)="operar()">
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Cantidad"  formControlName="cantidad" type="number" (input) = "calcularPago()">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Fecha de entrega" formControlName="fechaDevolucion">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <div class="pt-2">
+  <button class="btn btn-danger" mat-dialog-close>Cancelar</button>
+  <button class = "btn btn-success"  (click)= "operar()" [disabled]="formReserva.invalid">Aceptar</button>
+  </div>
+</mat-dialog-actions>

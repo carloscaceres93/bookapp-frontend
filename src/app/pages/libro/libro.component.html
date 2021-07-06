@@ -1,0 +1,28 @@
+<h2> Libros</h2>
+
+<div class="row" fxLayoutGap="1%">
+  <mat-card class="example-card" *ngFor="let l of libros">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{l.nombre}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="http://placeimg.com/640/480/arch/sepia?id={{l.idLibro}}" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        Autor: {{l.autor}}
+      </p>
+      <p>
+        Paginas: {{l.paginas}}
+      </p>
+      <p>
+        Cantidad Disponibles: {{l.cantidadDisponible}}
+      </p>
+      <p>
+        Tarifa: $ {{l.tarifa}} COP
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="btn btn-primary" (click)="openDialog(l.idLibro)">Reservar</button>
+    </mat-card-actions>
+  </mat-card>
+  </div>

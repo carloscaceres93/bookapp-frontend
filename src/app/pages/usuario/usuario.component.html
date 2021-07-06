@@ -1,0 +1,31 @@
+
+
+<div class="card mt-5" style="width: 18rem;">
+  <div class="card-header">
+    Formulario de Registro
+  </div>
+  <div class="card-body">
+  <form class="container" [formGroup]="formUsuario" #frmUsuario="ngForm" (ngSubmit)="registrar()">
+    <div [hidden]="true">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="ID" formControlName="idUsuario">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Email" formControlName="username">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Contraseña"  formControlName="contraseña" type="password">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Comfirmar contraseña" formControlName="confirmarContraseña" type="password">
+    </mat-form-field>
+    </form>
+
+    <button class="btn btn-primary" (click)= "registrar()" [disabled]="frmUsuario.invalid">Registrar</button>
+    <p><a href="#">¿Ya tengo Cuenta?</a></p>
+  </div>
+</div>

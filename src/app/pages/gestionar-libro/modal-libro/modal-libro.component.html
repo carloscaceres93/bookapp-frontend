@@ -1,0 +1,46 @@
+
+<h2 mat-dialog-title *ngIf= "data.id == 0">Registrar</h2>
+<h2 mat-dialog-title *ngIf= "data.id != 0">Actualizar</h2>
+
+<mat-dialog-content>
+
+  <form class="container" [formGroup]="formLibro" #frmLibro="ngForm" (ngSubmit)="operar()">
+    <div [hidden]="true">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="ID" formControlName="idLibro">
+        </mat-form-field>
+    </div>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Nombre"  formControlName="nombre">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Autor" formControlName="autor">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Cantidad Disponible" formControlName="cantidadDisponible" type="number">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Tarifa" formControlName="tarifa" type="number">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Paginas" formControlName="paginas" type="number">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Selecciona Categoria" [(value)]="idCategoriaSeleccionada" >
+          <mat-option *ngFor="let c of (categorias$ | async)" [value]="c.idCategoria">
+              {{ c.nombre }}
+          </mat-option>
+      </mat-select>
+  </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button mat-dialog-close class = "btn btn_danger">Cancelar</button>
+  <button class = "btn btn-primary" *ngIf= "data.id == 0" (click)= "operar()" [disabled]="frmLibro.invalid">Guardar</button>
+  <button class = "btn btn-success" *ngIf= "data.id != 0" (click)= "operar()" [disabled]="frmLibro.invalid">Actualizar</button>
+</mat-dialog-actions>

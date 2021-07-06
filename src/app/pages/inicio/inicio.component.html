@@ -1,0 +1,20 @@
+<h2> Categorias</h2>
+
+<div class="row" fxLayoutGap="1%">
+  <mat-card class="example-card" *ngFor="let c of categorias">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{c.nombre}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="http://placeimg.com/640/480/arch/sepia?id={{c.idCategoria}}" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        {{c.descripcion}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="btn btn-primary" [routerLink]="['../categoria', c.idCategoria,'libro']">Ver libros</button>
+    </mat-card-actions>
+  </mat-card>
+  </div>
+
