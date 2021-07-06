@@ -42,7 +42,8 @@ import { CustomDateAdapter } from './custom-adapter';
     MatNativeDateModule,
     MatSnackBarModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCardModule
 
   ],
   providers: [

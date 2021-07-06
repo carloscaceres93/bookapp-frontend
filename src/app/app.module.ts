@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ServerErrorsInterceptor } from './shared/server-errors.interceptor';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import {MatCardModule} from '@angular/material/card';
 
 import { JwtModule } from "@auth0/angular-jwt";
 import { environment } from 'src/environments/environment';
@@ -47,6 +48,7 @@ export function tokenGetter() {
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    MatCardModule,
 
     JwtModule.forRoot({
       config: {

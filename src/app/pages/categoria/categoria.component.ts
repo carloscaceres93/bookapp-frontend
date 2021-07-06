@@ -20,7 +20,7 @@ export class CategoriaComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource: MatTableDataSource<Categoria>;
-  displayedColumns: string[] =['nombre','descripcion','estado','acciones'];
+  displayedColumns: string[] =['nombre','descripcion','acciones'];
   cantidad: number = 0;
 
   constructor(
@@ -76,7 +76,7 @@ export class CategoriaComponent implements OnInit {
       width: "300px",
 
     });
-    categoria.estado = true;
+    categoria.estado = false;
     dialogRef.afterClosed().subscribe(res =>{
       if(res){
         this.categoriaService.modificar(categoria).pipe(switchMap(()=>{

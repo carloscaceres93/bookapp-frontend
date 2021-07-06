@@ -1,0 +1,14 @@
+version: '3'  
+services:
+  titamediapp-frontend:
+    image: titamediapp-frontend
+    container_name: titamediapp-frontend
+    build: 
+      context: ./
+    ports:  
+    - "8290:80"
+    networks:
+    - network_titamedia
+networks:
+  network_titamedia:
+     external: true
