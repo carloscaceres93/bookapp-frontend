@@ -5,8 +5,10 @@ import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Categoria } from 'src/app/_model/categoria';
 import { Libro } from 'src/app/_model/libro';
+import { Tarifa } from 'src/app/_model/tarifa';
 import { CategoriaService } from 'src/app/_service/categoria.service';
 import { LibroService } from 'src/app/_service/libro.service';
+import { TarifaService } from 'src/app/_service/tarifa.service';
 
 @Component({
   selector: 'app-modal-libro',
@@ -16,13 +18,16 @@ import { LibroService } from 'src/app/_service/libro.service';
 export class ModalLibroComponent implements OnInit {
 
   categorias$: Observable<Categoria[]>;
+  tarifas$: Observable<Tarifa[]>;
 
   idCategoriaSeleccionada: number;
+  idTarifaSeleccionada: number;
   libro: Libro;
   formLibro: FormGroup;
   constructor(
     private libroService: LibroService,
     private categoriaService: CategoriaService,
+    private tarifaService: TarifaService,
     private dialogRef: MatDialogRef<ModalLibroComponent>,
     @Inject(MAT_DIALOG_DATA) public data: {id: number},
     public dialog: MatDialog,
@@ -32,6 +37,7 @@ export class ModalLibroComponent implements OnInit {
     this.initFormLibro();
     this.cargarDatosEdicion();
     this.listarcategorias();
+    this.listarTarifas();
   }
 
   initFormLibro(){
@@ -42,7 +48,6 @@ export class ModalLibroComponent implements OnInit {
       paginas : new FormControl(1, Validators.required),
       cantidadDisponible : new FormControl(1, Validators.required),
       cantidadReservada : new FormControl(0),
-      tarifa : new FormControl(1, Validators.required),
       categoria : new FormControl(Validators.required)
     });
   }
@@ -51,9 +56,16 @@ export class ModalLibroComponent implements OnInit {
       this.categorias$ = this.categoriaService.listar();
   }
 
+  private listarTarifas(){
+    this.tarifas$ = this.tarifaService.listar();
+}
+
   operar(){
     let categoria = new Categoria();
     categoria.idCategoria = this.idCategoriaSeleccionada;
+
+    let tarifa = new Tarifa();
+    tarifa.idTarifa = this.idTarifaSeleccionada;
 
     let libro = new Libro();
     libro.nombre = this.formLibro.value['nombre'];
@@ -61,8 +73,8 @@ export class ModalLibroComponent implements OnInit {
     libro.paginas = this.formLibro.value['paginas'];
     libro.cantidadDisponible = this.formLibro.value['cantidadDisponible'];
     libro.cantidadReservada = this.formLibro.value['cantidadReservada'];
-    libro.tarifa = this.formLibro.value['tarifa'];
     libro.categoria = categoria;
+    libro.tarifa = tarifa;
     libro.estado = true;
 
     console.log(libro);
@@ -98,11 +110,11 @@ export class ModalLibroComponent implements OnInit {
             paginas : res.paginas,
             cantidadDisponible : res.cantidadDisponible,
             cantidadReservada : res.cantidadReservada,
-            tarifa : res.tarifa,
             categoria : res.categoria,
           });
 
-          this.idCategoriaSeleccionada = res.categoria.idCategoria
+          this.idCategoriaSeleccionada = res.categoria.idCategoria;
+          this.idTarifaSeleccionada = res.tarifa.idTarifa;
       });
     }
   }

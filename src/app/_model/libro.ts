@@ -1,4 +1,5 @@
 import { Categoria } from "./categoria";
+import { Tarifa } from "./tarifa";
 
 export class Libro {
   idLibro: number;
@@ -7,7 +8,7 @@ export class Libro {
   paginas: number;
   cantidadDisponible: number;
   cantidadReservada: number;
-  tarifa: number;
+  tarifa: Tarifa;
   categoria: Categoria;
   estado: boolean;
 }

@@ -21,8 +21,12 @@
       <input matInput placeholder="Cantidad Disponible" formControlName="cantidadDisponible" type="number">
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Tarifa" formControlName="tarifa" type="number">
+    <mat-form-field>
+      <mat-select placeholder="Selecciona tarifa" [(value)]="idTarifaSeleccionada" >
+          <mat-option *ngFor="let t of (tarifas$ | async)" [value]="t.idTarifa">
+              {{ t.precio }}
+          </mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">

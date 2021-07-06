@@ -14,16 +14,14 @@
     </button>
 
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <mat-icon>account_box</mat-icon>
-        <span>Mi Perfil</span>
-      </button>
       <button
-        mat-menu-item
-      >
-        <mat-icon>exit_to_app</mat-icon>
-        <span>Cerrar Sesión</span>
-      </button>
+      mat-menu-item
+      (click)="sidenav.opened = false"
+      (click)="loginService.cerrarSesion()"
+    >
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Cerrar Sesión</span>
+    </button>
     </mat-menu>
   </mat-toolbar>
 

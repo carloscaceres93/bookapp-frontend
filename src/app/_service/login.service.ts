@@ -28,18 +28,11 @@ export class LoginService {
     return token != null;
   }
 
-  cerrarSesion() {
-    let token = sessionStorage.getItem(environment.TOKEN_NAME);
 
-    if (token) {
-      this.http.get(`${environment.HOST}/tokens/anular/${token}`).subscribe(() => {
-        sessionStorage.clear();
-        this.router.navigate(['login']);
-      });
-    } else {
-      sessionStorage.clear();
-      this.router.navigate(['login']);
-    }
+
+  cerrarSesion(): void {
+    localStorage.removeItem(environment.TOKEN_NAME);
+    this.router.navigate(['login']);
   }
 
   enviarCorreo(correo: string) {

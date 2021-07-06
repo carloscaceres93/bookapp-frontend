@@ -17,6 +17,7 @@ import { ModalCategoriaComponent } from './categoria/modal-categoria/modal-categ
 import { GestionarLibroComponent } from './gestionar-libro/gestionar-libro.component';
 import { ModalLibroComponent } from './gestionar-libro/modal-libro/modal-libro.component';
 import { Not403Component } from './not403/not403.component';
+import { GestionarTarifaComponent } from './gestionar-tarifa/gestionar-tarifa.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { Not403Component } from './not403/not403.component';
     GestionarLibroComponent,
     ModalLibroComponent,
     Not403Component,
+    GestionarTarifaComponent,
   ],
   imports: [
     CommonModule,

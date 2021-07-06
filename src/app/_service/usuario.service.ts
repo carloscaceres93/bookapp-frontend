@@ -28,6 +28,10 @@ export class UsuarioService extends GenericService<Usuario>{
     return this.http.put(`${this.url}/deshabilitar`,usuario);
   }
 
+  findOneByUsername(usuario: string){
+    return this.http.get<any>(`${this.url}/prueba/${usuario}`);
+  }
+
   getUsuarioCambio() {
     return this.usuarioCambio.asObservable();
   }

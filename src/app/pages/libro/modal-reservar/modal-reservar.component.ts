@@ -11,6 +11,8 @@ import * as moment from 'moment';
 import { ModalComfirmarComponent } from '../../generic/modal-comfirmar/modal-comfirmar.component';
 import { switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { JwtHelperService } from "@auth0/angular-jwt";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-modal-reservar',
@@ -22,8 +24,8 @@ export class ModalReservarComponent implements OnInit {
   fechaSeleccionada: Date = new Date();
 
   libro: Libro = new Libro();
-  reserva: Reserva;
-  usuario: Usuario;
+  reserva: Reserva = new Reserva();
+  usuario: Usuario = new Usuario();
   pagoTotal: number = 0;
 
   formReserva : FormGroup;
@@ -53,7 +55,13 @@ export class ModalReservarComponent implements OnInit {
   }
 
   private cargardatosUsuario(){
-    this.usuarioService.listarPorId(2).subscribe(data =>{
+
+    const helper = new JwtHelperService();
+    let token = sessionStorage.getItem(environment.TOKEN_NAME);
+    const decodedToken = helper.decodeToken(token);
+    let usuarioNombre = decodedToken.user_name;
+
+    this.usuarioService.findOneByUsername(usuarioNombre).subscribe(data =>{
       this.usuario = data;
     })
   }
@@ -95,7 +103,7 @@ export class ModalReservarComponent implements OnInit {
   }
 
   calcularPago(){
-    let tarifa: number = this.libro.tarifa;
+    let tarifa: number = this.libro.tarifa.precio;
     let cantidad: number = this.formReserva.value['cantidad'];
 
      this.pagoTotal = tarifa * cantidad;
