@@ -19,6 +19,13 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ServerErrorsInterceptor } from './shared/server-errors.interceptor';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
+import { JwtModule } from "@auth0/angular-jwt";
+import { environment } from 'src/environments/environment';
+
+export function tokenGetter() {
+  return sessionStorage.getItem(environment.TOKEN_NAME);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +47,14 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: [environment.HOST.substring(7)],
+        disallowedRoutes: [`http://${environment.HOST.substring(7)}/login/enviarCorreo`],
+      },
+    }),
 
   ],
   providers: [

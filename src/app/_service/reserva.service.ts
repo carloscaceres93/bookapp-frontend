@@ -16,7 +16,7 @@ export class ReservaService extends GenericService<Reserva>{
   constructor(protected http: HttpClient) {
     super(
       http,
-      `${environment.HOST}/reservas`
+      `${environment.HOST}/api/reservas`
     );
   }
 

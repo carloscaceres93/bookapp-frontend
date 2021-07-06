@@ -16,7 +16,7 @@ export class LibroService extends GenericService<Libro>{
   constructor(protected http: HttpClient) {
     super(
       http,
-      `${environment.HOST}/libros`
+      `${environment.HOST}/api/libros`
     );
   }
 

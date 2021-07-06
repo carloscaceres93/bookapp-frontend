@@ -16,7 +16,7 @@ export class UsuarioService extends GenericService<Usuario>{
   constructor(protected http: HttpClient) {
     super(
       http,
-      `${environment.HOST}/usuarios`
+      `${environment.HOST}/api/usuarios`
     );
   }
 

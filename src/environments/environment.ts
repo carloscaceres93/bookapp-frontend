@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  HOST: 'http://localhost:8282/api',
-  TOKEN_AUTH_USERNAME: '',
-  TOKEN_AUTH_PASSWORD: '',
+  HOST: 'http://localhost:8282',
+  TOKEN_AUTH_USERNAME: 'titamediapp',
+  TOKEN_AUTH_PASSWORD: 'tita89codex',
   TOKEN_NAME: 'access_token',
   REINTENTOS: 2
 };
