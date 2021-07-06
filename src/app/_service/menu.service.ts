@@ -19,11 +19,7 @@ export class MenuService extends GenericService<Menu> {
   }
 
   listarPorUsuario(nombre: string) {
-    let token = sessionStorage.getItem(environment.TOKEN_NAME);
-
-    return this.http.post<Menu[]>(`${this.url}/usuario`, nombre, {
-      headers: new HttpHeaders().set('Authorization', `bearer ${token}`).set('Content-Type', 'application/json')
-    });
+    return this.http.post<Menu[]>(`${this.url}/usuario`, nombre);
   }
 
   getMenuCambio() {

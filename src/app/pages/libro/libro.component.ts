@@ -79,4 +79,15 @@ export class LibroComponent implements OnInit {
     });
   }
 
+  validar(){
+    let tamaño = this.libros.length;
+    let validar = true;
+    if(tamaño < 0){
+      validar =false;
+    }else{
+      validar =true;
+    }
+
+    return validar;
+  }
 }
