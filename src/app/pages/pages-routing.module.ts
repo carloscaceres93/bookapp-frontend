@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { GuardService } from '../_service/guard.service';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { GestionarLibroComponent } from './gestionar-libro/gestionar-libro.component';
+import { GestionarTarifaComponent } from './gestionar-tarifa/gestionar-tarifa.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { LibroComponent } from './libro/libro.component';
 import { Not403Component } from './not403/not403.component';
@@ -17,6 +18,7 @@ export const routes: Routes = [
   {path: 'categoria', component: CategoriaComponent, canActivate: [GuardService]},
 
   {path: 'gestionar-libro', component: GestionarLibroComponent, canActivate: [GuardService]},
+  {path: 'gestionar-tarifa', component: GestionarTarifaComponent, canActivate: [GuardService]},
   {path: 'not-403', component: Not403Component},
 
 ]

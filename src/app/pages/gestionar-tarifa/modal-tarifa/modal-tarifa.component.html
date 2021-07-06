@@ -1,0 +1,34 @@
+
+<h2 mat-dialog-title *ngIf= "data.id == 0">Registrar</h2>
+<h2 mat-dialog-title *ngIf= "data.id != 0">Actualizar</h2>
+
+<mat-dialog-content>
+
+  <form class="container" [formGroup]="formTarifa" #frmTrifa="ngForm" (ngSubmit)="operar()">
+    <div [hidden]="true">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="ID" formControlName="idTarifa">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Nombre" minlength="3" formControlName="nombre">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Precio" minlength="3" formControlName="precio">
+    </mat-form-field>
+
+     <mat-form-field class="example-full-width">
+      <input matInput placeholder="Descripcion" minlength="3" formControlName="descripcion">
+    </mat-form-field>
+
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button mat-dialog-close class = "btn btn_danger">Cancelar</button>
+  <button class = "btn btn-primary" *ngIf= "data.id == 0" (click)= "operar()" [disabled]="frmTrifa.invalid">Guardar</button>
+  <button class = "btn btn-success" *ngIf= "data.id != 0" (click)= "operar()" [disabled]="frmTrifa.invalid">Actualizar</button>
+</mat-dialog-actions>
+

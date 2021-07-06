@@ -18,6 +18,8 @@ import { GestionarLibroComponent } from './gestionar-libro/gestionar-libro.compo
 import { ModalLibroComponent } from './gestionar-libro/modal-libro/modal-libro.component';
 import { Not403Component } from './not403/not403.component';
 import { GestionarTarifaComponent } from './gestionar-tarifa/gestionar-tarifa.component';
+import { ModalTarifaComponent } from './gestionar-tarifa/modal-tarifa/modal-tarifa.component';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { GestionarTarifaComponent } from './gestionar-tarifa/gestionar-tarifa.co
     ModalLibroComponent,
     Not403Component,
     GestionarTarifaComponent,
+    ModalTarifaComponent,
   ],
   imports: [
     CommonModule,
